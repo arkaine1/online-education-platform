@@ -1,0 +1,699 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ====================================
+   2. Typography
+   ==================================== */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f8f9fa;
+}
+
+/* ====================================
+   3. Layout & Grid
+   ==================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* ====================================
+   4. Navigation
+   ==================================== */
+/* Primary Navigation */
+.navbar {
+    background: linear-gradient(135deg, #1e88e5, #0d47a1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 0.8rem 2rem;
+}
+
+/* Navigation Links */
+.nav-link {
+    position: relative;
+    padding: 0.8rem 1.2rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+    width: 70%;
+}
+
+.navbar .btn-outline-light {
+    border-width: 2px;
+    border-radius: 20px;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.navbar .btn-outline-light:hover {
+    transform: translateY(-2px);
+    background-color: white;
+    color: #1976d2;
+}
+
+.navbar .btn-light {
+    border-radius: 20px;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    transition: all 0.3s ease;
+    color: #1976d2;
+}
+
+.navbar .btn-light:hover {
+    transform: translateY(-2px);
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.nav-right-buttons {
+    margin-left: 10px;
+}
+
+/* ====================================
+   5. Hero Section
+   ==================================== */
+/* Hero Container */
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0;
+    z-index: 1;
+    color: white;
+}
+
+/* Hero Background & Overlay */
+.hero-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/learning-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.4);
+    z-index: -1;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('images/learning-bg.jpg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero img {
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.hero img:hover {
+    transform: translateY(-10px);
+}
+
+/* ====================================
+   6. Course Cards
+   ==================================== */
+/* Course Grid Layout */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Increased minimum width to 350px */
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* Course Card Base Styles */
+.course-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+    height: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.course-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: #f1f1f1; /* Placeholder background while loading */
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+/* Featured course cards - enhanced styling */
+.featured-course-card {
+    border-radius: 12px;
+    transition: all 0.4s ease;
+}
+
+.featured-course-card .card-img-container {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.featured-course-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.featured-course-card:hover img {
+    transform: scale(1.05);
+}
+
+.featured-course-card .category-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 2;
+}
+
+.featured-course-card .price-tag {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: #3498db;
+    z-index: 2;
+}
+
+.featured-course-card .card-body {
+    padding: 1.25rem;
+}
+
+.featured-course-card .instructor {
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.featured-course-card .instructor-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 8px;
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.featured-course-card .card-footer {
+    background: transparent;
+    border-top: 1px solid rgba(0,0,0,.05);
+    padding: 1rem 1.25rem;
+}
+
+.featured-course-card .stats {
+    display: flex;
+    justify-content: space-between;
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+/* Homepage featured course cards - make them wider */
+#featured .course-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Wider cards on homepage */
+}
+
+/* Homepage featured course cards - make them fit three per row */
+#featured .course-grid {
+    grid-template-columns: repeat(3, 1fr); /* Three columns of equal width */
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Dashboard course cards - specific styling for dashboard */
+#enrolledCourses .course-card img {
+    border-radius: 8px;
+    border-top-left-radius: 0; /* Reset for dashboard layout */
+    border-top-right-radius: 0; /* Reset for dashboard layout */
+}
+
+/* ====================================
+   7. Components
+   ==================================== */
+/* Buttons */
+.btn {
+    // ...existing code...
+}
+
+/* Progress Bars */
+.progress {
+    background-color: #e9ecef;
+    border-radius: 5px;
+    height: 10px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.progress-sm {
+    height: 5px;
+}
+
+.progress-bar {
+    transition: width 0.5s ease;
+}
+
+/* Dashboard stats */
+.stat-card {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Course actions */
+.course-actions {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.preview-button {
+    display: inline-block;
+    background-color: #95a5a6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-left: 0.5rem;
+}
+
+.preview-button:hover {
+    background-color: #7f8c8d;
+}
+
+/* Social Icons */
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #2196f3;
+    transform: translateY(-3px);
+}
+
+/* Chapter progress styles */
+.chapters-progress {
+    margin-top: 1rem;
+}
+
+.chapter-progress {
+    margin: 0.5rem 0;
+}
+
+.chapter-title {
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.progress-text {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.overall-progress {
+    margin-bottom: 1rem;
+}
+
+/* Course Content Page Styles */
+.course-content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.course-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1rem;
+}
+
+.course-description {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.chapter-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.chapter-item:hover {
+    border-left-color: #1976d2;
+    background-color: #e3f2fd;
+}
+
+.chapter-item.active {
+    border-left-color: #1976d2;
+    background-color: #e3f2fd;
+}
+
+.chapter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.duration {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.chapter-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+.chapter-button:hover {
+    background-color: #2980b9;
+}
+
+.content-text {
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.video-container {
+    margin: 2rem 0;
+}
+
+.video-placeholder {
+    background-color: #e9ecef;
+    padding: 50px;
+    text-align: center;
+    border-radius: 5px;
+    color: #6c757d;
+}
+
+.chapter-actions {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.error {
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #e74c3c;
+}
+
+/* Enhanced Footer Styling */
+.footer {
+    background: linear-gradient(135deg, #1565c0, #0d47a1);
+}
+
+.footer h5, .footer h6 {
+    position: relative;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.footer h5::after, .footer h6::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #2196f3;
+}
+
+.footer .list-inline-item {
+    margin-right: 15px;
+}
+
+.footer .list-inline-item a {
+    transition: color 0.3s ease;
+}
+
+.footer .list-inline-item a:hover {
+    color: white !important;
+}
+
+/* ====================================
+   8. Utilities
+   ==================================== */
+/* Spacing Utilities */
+.mb-custom {
+    // ...existing code...
+}
+
+/* ====================================
+   9. Dark Mode
+   ==================================== */
+/* Dark theme overrides */
+[data-bs-theme="dark"] {
+    --bs-body-bg: #121212;
+    --bs-body-color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .bg-light {
+    background-color: #212121 !important;
+}
+
+[data-bs-theme="dark"] .text-muted {
+    color: #adb5bd !important;
+}
+
+[data-bs-theme="dark"] .card {
+    background-color: #1e1e1e;
+}
+
+[data-bs-theme="dark"] .card-header {
+    background-color: #2a2a2a;
+}
+
+[data-bs-theme="dark"] .modal-content {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .form-control {
+    background-color: #333;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .form-control:focus {
+    background-color: #3a3a3a;
+    color: white;
+}
+
+[data-bs-theme="dark"] .footer {
+    background: linear-gradient(135deg, #0d47a1, #01579b);
+}
+
+/* ====================================
+   10. Responsive Design
+   ==================================== */
+/* Mobile Breakpoints */
+@media (max-width: 768px) {
+    .course-grid, #featured .course-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero {
+        padding: 40px 0;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Tablet Breakpoints */
+@media (max-width: 992px) {
+    #featured .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop Breakpoints */
+@media (max-width: 1200px) {
+    #featured .course-grid {
+        grid-template-columns: repeat(3, 1fr); /* Three columns of equal width */
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 1600px; /* Increased from default container width */
+        margin: 0 auto; /* Center the grid */
+    }
+}
+
+/* Homepage featured course cards - make them fit three per row with increased width */
+#featured .course-grid {
+    grid-template-columns: repeat(3, 1fr); /* Three columns of equal width */
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1600px; /* Increased from default container width */
+    margin: 0 auto; /* Center the grid */
+}
+
+/* Make featured course cards larger */
+#featured .featured-course-card .card-img-container {
+    height: 250px; /* Increased from 200px */
+}
+
+/* Make the container wider for featured courses section */
+#featured.container {
+    max-width: 1600px; /* Increased from default Bootstrap container width */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+    #featured .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    #featured .course-grid {
+        grid-template-columns: repeat(1, 1fr); /* Single column on medium devices */
+    }
+}
+
+/* Update primary color */
+.bg-primary, .btn-primary, .badge-primary {
+    background-color: #1976d2 !important;
+    border-color: #1976d2 !important;
+}
+
+.text-primary {
+    color: #1976d2 !important;
+}
+
+.btn-outline-primary {
+    border-color: #1976d2 !important;
+    color: #1976d2 !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: #1976d2 !important;
+    color: white !important;
+}
+
+/* Secondary blue shade */
+.btn-info, .bg-info {
+    background-color: #03a9f4 !important;
+    border-color: #03a9f4 !important;
+}
+
+/* Accent blue shade */
+.social-icons a:hover {
+    background-color: #2196f3;
+    transform: translateY(-3px);
+}
+
+/* Footer styling */
+.footer {
+    background: linear-gradient(135deg, #1565c0, #0d47a1);
+}
+
+.footer h5::after, .footer h6::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #2196f3;
+}
+
+/* Dark theme adjustments */
+[data-bs-theme="dark"] .footer {
+    background: linear-gradient(135deg, #0d47a1, #01579b);
+}
+
+/* Chapter item active state */
+.chapter-item.active {
+    border-left-color: #1976d2;
+    background-color: #e3f2fd;
+}
+
+.chapter-item:hover {
+    border-left-color: #1976d2;
+    background-color: #e3f2fd;
+}
